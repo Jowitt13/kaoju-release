@@ -41,8 +41,8 @@ Two checks, in order.
    version's release notes. For v0.2.0:
 
    ```
-   sha256 : 66da6c21ed10a61dfef0092b9255e52452689054769bb37c0dd1bada38115cd8
-   bytes  : 222,448,647
+   sha256 : e89e47d8077dc4375acaaa71673d078681f30a56a5bdf9bb5b3031f8045d00e5
+   bytes  : 222,453,366
    ```
 
 2. After unpacking, verify every file from the release directory - the layer
@@ -57,7 +57,7 @@ manifest inside the package (2,769 rows, 348,461 bytes), so the two can
 be compared directly. Its own digest:
 
 ```
-eab925795583788accb627d33ea64e509266fcb612d7a146d8191c6782dfd06e
+399d54b781f4f60c039ce519743f8082c545eb8bfb8a13252a18e2be58ad3462
 ```
 
 The package contains zero source code, zero key material and zero browser
