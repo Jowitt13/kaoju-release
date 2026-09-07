@@ -55,8 +55,8 @@ Two checks, in order.
    version's release notes. For v0.2.1:
 
    ```
-   sha256 : 50b9b67e793f9c9a4cd7c96bdcff4f66d404f0b5a593644f0379a26753996f19
-   bytes  : 336,078,692
+   sha256 : a5c05fb7efd4f5b6720911c39278ab5135a83952bae3f890f0451fce78dee735
+   bytes  : 336,077,009
    ```
 
 2. After unpacking, verify every file from the release directory - the layer
@@ -67,11 +67,11 @@ Two checks, in order.
    ```
 
 `releases/kaoju-workbuddy-0.2.1/SHA256SUMS.txt` in this repository is a byte-for-byte copy of the
-manifest inside the package (4,343 rows, 551,632 bytes), so the two can
+manifest inside the package (4,343 rows, 547,289 bytes), so the two can
 be compared directly. Its own digest:
 
 ```
-bee271a6da2a5332f00a1d6867392f62c54c5bc1d3139e147b5e3202ea6b5aee
+bbea1ec69633e2966d08f5044f927ecc4b480a4d797b16c66f120b3ee0f1c65f
 ```
 
 The package's compiled runtime contains zero source code, zero key material and
