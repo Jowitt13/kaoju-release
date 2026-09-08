@@ -1,16 +1,17 @@
 # kaoju WorkBuddy - Official Release Channel
 
 Trust anchor for kaoju WorkBuddy releases: change notes and checksums are
-published here. **Compiled packages are not downloadable from this repository.**
-The product is sold by direct delivery, so no release carries a package asset -
-that is deliberate, not an oversight. Source code is proprietary and lives in a
-private repository.
+published here. **Since v0.2.1 the compiled package is also downloadable from
+this repository** - the v0.2.1 release carries the master archive as an asset,
+by explicit Owner decision on 2026-09-09, reversing the earlier
+delivery-after-payment-only policy. Releases before v0.2.1 carry no asset.
+Source code remains proprietary and lives in a private repository.
 
 ## Releases
 
 | version | status | package | public checksums |
 |---|---|---|---|
-| 0.2.1 | **Current** - all eight tools fully usable (acquire_paper + acquire_page fixed) | not published here - delivered privately by the seller after payment | `releases/kaoju-workbuddy-0.2.1/SHA256SUMS.txt` (every file in the package, 4,343 rows) + master-zip sha256 in the v0.2.1 release notes |
+| 0.2.1 | **Current** - all eight tools fully usable (acquire_paper + acquire_page fixed) | [`kaoju-workbuddy-0.2.1.zip`](https://github.com/Jowitt13/kaoju-release/releases/download/v0.2.1/kaoju-workbuddy-0.2.1.zip) attached to the v0.2.1 release (336,077,009 bytes) | `releases/kaoju-workbuddy-0.2.1/SHA256SUMS.txt` (every file in the package, 4,343 rows) + master-zip sha256 in the v0.2.1 release notes |
 | ~~0.2.0~~ | **SUPERSEDED by 0.2.1** (pre-launch build: acquire_paper structurally dead and acquire_page extension never shipped in the compiled package; never distributed to a customer) | no asset; kept as honest history | `releases/kaoju-workbuddy-0.2.0/SHA256SUMS.txt` (kept, historical) |
 | ~~0.1.1~~ | **DEPRECATED** - unusable with a spec-compliant MCP client (protocol defect, fixed in 0.2.0) | no asset; a zip asset was published once and has been removed | `releases/kaoju-workbuddy-0.1.1/SHA256SUMS.txt` (archive level only) |
 | ~~0.1.0~~ | **DEPRECATED** - same protocol defect; also carried the since-removed activation flow | no asset; removed | `releases/kaoju-workbuddy-0.1.0/SHA256SUMS.txt` (archive level only) |
@@ -43,15 +44,17 @@ the specification text rather than to the implementation's output shape.
 
 ## Purchase
 
-Earlybird 39 CNY / Standard 69 CNY (one-time buyout).
-**Obtain the package from the seller after payment** - install and run.
-No activation step, no activation servers, no feature gates (removed in 0.1.1).
+Earlybird 39 CNY / Standard 69 CNY (one-time buyout). The v0.2.1 package is
+nonetheless **freely downloadable from the v0.2.1 release**: there is no
+activation step, no activation server and no feature gate (removed in 0.1.1),
+so a downloaded copy is a fully working copy. Paying buys support and future
+updates - not functionality.
 
 ## Integrity
 
 Two checks, in order.
 
-1. Verify the master zip you received against the digest published in that
+1. Verify the master zip you downloaded (or received) against the digest published in that
    version's release notes. For v0.2.1:
 
    ```
