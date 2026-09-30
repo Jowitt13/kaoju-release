@@ -2,7 +2,7 @@
 
 Trust anchor for kaoju WorkBuddy releases: change notes and checksums are
 published here. **Since v0.2.1 the compiled package is also downloadable from
-this repository** - the v0.2.1 and v0.2.2 releases each carry their master
+this repository** - v0.2.1 and later releases each carry their master
 archive as an asset, by explicit Owner decision on 2026-09-09, reversing
 the earlier delivery-after-payment-only policy. Releases before v0.2.1
 carry no asset, and no published asset is ever removed.
@@ -12,7 +12,9 @@ Source code remains proprietary and lives in a private repository.
 
 | version | status | package | public checksums |
 |---|---|---|---|
-| 0.2.2 | **Current** - field-feedback hotfix round. The data root is now unified, so **uninstalling no longer deletes your evidence library**; wiki pages are no longer misjudged as bot-challenge pages and dropped; the source templates that ship with the playbooks validate as-is instead of being rejected; an empty result set is no longer reported as a success; and a failed acquisition now points at its own evidence files | [`kaoju-workbuddy-0.2.2.zip`](https://github.com/Jowitt13/kaoju-release/releases/download/v0.2.2/kaoju-workbuddy-0.2.2.zip) attached to the v0.2.2 release (336,110,525 bytes) | `releases/kaoju-workbuddy-0.2.2/SHA256SUMS.txt` (every file in the package, 4,347 rows) + master-zip sha256 in the v0.2.2 release notes |
+| 0.3.1 | **Current** - compiled acquisition hotfix: restores `acquire_paper` and rejects stale compiled installers before release | [`kaoju-0.3.1.zip`](https://github.com/Jowitt13/kaoju-release/releases/download/v0.3.1/kaoju-0.3.1.zip) (274,173,679 bytes) | `releases/kaoju-0.3.1/SHA256SUMS.txt` (3,832 rows) + archive SHA-256 in the v0.3.1 release notes |
+| ~~0.3.0~~ | **SUPERSEDED by 0.3.1** - the public package's compiled acquisition engine lacked required distribution metadata, so `acquire_paper` failed; its installer also generated the obsolete `workbuddy-mcp.json` name | [`kaoju-0.3.0.zip`](https://github.com/Jowitt13/kaoju-release/releases/download/v0.3.0/kaoju-0.3.0.zip) retained as historical (266,216,412 bytes) | archive SHA-256 remains in the v0.3.0 release notes |
+| ~~0.2.2~~ | **SUPERSEDED by 0.3.0** - field-feedback hotfix round; its evidence-preserving uninstall and other fixes are retained | [`kaoju-workbuddy-0.2.2.zip`](https://github.com/Jowitt13/kaoju-release/releases/download/v0.2.2/kaoju-workbuddy-0.2.2.zip) retained as historical (336,110,525 bytes) | `releases/kaoju-workbuddy-0.2.2/SHA256SUMS.txt` (4,347 rows) + archive SHA-256 in the v0.2.2 release notes |
 | ~~0.2.1~~ | **SUPERSEDED by 0.2.2** (its uninstaller could delete the evidence library: the installer and the compiled runtime disagreed about where the data root was, so the uninstall preserved one path and removed the other. All eight tools were usable; fixed in 0.2.2) | asset RETAINED - still downloadable from the v0.2.1 release (336,077,009 bytes); historical release entries and assets are never rewritten or removed | `releases/kaoju-workbuddy-0.2.1/SHA256SUMS.txt` (kept, historical; 4,343 rows) + master-zip sha256 in the v0.2.1 release notes |
 | ~~0.2.0~~ | **SUPERSEDED by 0.2.1** (pre-launch build: acquire_paper structurally dead and acquire_page extension never shipped in the compiled package; never distributed to a customer) | no asset; kept as honest history | `releases/kaoju-workbuddy-0.2.0/SHA256SUMS.txt` (kept, historical) |
 | ~~0.1.1~~ | **DEPRECATED** - unusable with a spec-compliant MCP client (protocol defect, fixed in 0.2.0) | no asset; a zip asset was published once and has been removed | `releases/kaoju-workbuddy-0.1.1/SHA256SUMS.txt` (archive level only) |
@@ -30,6 +32,17 @@ drop the session.
 
 Both are fixed in 0.2.0 and guarded by a permanent conformance suite anchored to
 the specification text rather than to the implementation's output shape.
+
+### What v0.3.1 fixes over v0.3.0
+
+- The compiled acquisition engine now ships the runtime distribution metadata
+  queried during a crawl, including `lxml`; `acquire_paper` has been verified
+  against a loopback source after a full installation.
+- Release assembly now performs an offline compiled-engine crawl and a compiled
+  installer dry run. A zero exit code without a successful fetch, or an installer
+  that writes the obsolete MCP configuration name, blocks the build.
+- The release exposes nine MCP tools. The MCP protocol's `serverInfo.version`
+  remains `0.13.0`; it is not the distribution version.
 
 ### What v0.2.2 adds over 0.2.1
 
@@ -89,8 +102,8 @@ stays at `0.10.0` (a separate namespace from the release version).
 
 ## Purchase
 
-Earlybird 39 CNY / Standard 69 CNY (one-time buyout). The v0.2.2 package is
-nonetheless **freely downloadable from the v0.2.2 release**: there is no
+Earlybird 39 CNY / Standard 69 CNY (one-time buyout). The v0.3.1 package is
+nonetheless **freely downloadable from the v0.3.1 release**: there is no
 activation step, no activation server and no feature gate (removed in 0.1.1),
 so a downloaded copy is a fully working copy. Paying buys support and future
 updates - not functionality.
@@ -100,7 +113,15 @@ updates - not functionality.
 Two checks, in order.
 
 1. Verify the master zip you downloaded (or received) against the digest published in that
-   version's release notes. For v0.2.2:
+   version's release notes. For v0.3.1:
+
+   ```
+   sha256 : 41225cc770355d04e9061680d68b4e2dc6a47cfcb9f43daafad4ea6ae8abb50d
+   bytes  : 274,173,679
+   ```
+
+   The superseded v0.3.0 archive remains downloadable. Its digest is preserved
+   in the v0.3.0 release notes. The older v0.2.2 archive digest is:
 
    ```
    sha256 : 6e602233a4628e923248a1deeb1d8e23db9d5a82d09e75a1ea6da126d8df2695
@@ -122,9 +143,16 @@ Two checks, in order.
    sha256sum -c SHA256SUMS.txt
    ```
 
-`releases/kaoju-workbuddy-0.2.2/SHA256SUMS.txt` in this repository is a byte-for-byte copy of the
-manifest inside the package (4,347 rows, 547,850 bytes), so the two can
-be compared directly. Its own digest:
+`releases/kaoju-0.3.1/SHA256SUMS.txt` in this repository is a byte-for-byte
+copy of the manifest inside the v0.3.1 package (3,832 rows, 484,580 bytes),
+so the two can be compared directly. Its own digest:
+
+```
+27a0ea827616689e68f014f960ecd50d9a1649ca62a77307de7aa665f7a069b5
+```
+
+The older `releases/kaoju-workbuddy-0.2.2/SHA256SUMS.txt` is retained
+unchanged (4,347 rows, 547,850 bytes); its digest is:
 
 ```
 d73bdd4595471442602a6007e7972ef42687f903ce9a35ff7ac600b8caacf2b2
