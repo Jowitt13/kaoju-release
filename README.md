@@ -1,130 +1,162 @@
-# kaoju · 考据
+# 考据 kaoju · v0.4.0
 
 [中文](#中文) · [English](#english)
 
 ## 中文
 
-kaoju 是一套通过 **MCP** 接入 AI 客户端的资料检索、网页/论文采集与本地存证工具。
-它让你从“找到线索”走到“留下可追溯的原文、出处和采集记录”：搜索结果、采集文件、
-图片来源和作业状态都有对应的证据记录。适用于论文素材整理、舆情监测、竞品调研、
-建筑案例研究等场景；发行包还附带四份对应的场景剧本（Skills）。
+给 Agent 使用的本地研究工具：通过 MCP 检索资料、登记来源、采集网页与论文，
+把原文、解析结果、图片出处和校验清单保存在你自己的数据目录
 
-它不是一个独立聊天机器人，也不会替你判断资料一定真实或图片一定可商用。
-联网检索、网页采集和安装浏览器组件需要网络；采集与检索结果保存在你指定的本地数据目录。
+kaoju 不是独立聊天机器人，也不替代原文核对或图片授权核查
+检索与采集需要访问外部服务，证据文件保存在本地
 
-### 能做什么：九个 MCP 工具
+**当前版本：[v0.4.0](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.0)**
+· [下载 Windows ZIP](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip)
+· [发布说明](releases/kaoju-0.4.0/RELEASE_NOTES.md)
 
-| 工具 | 用途 |
+### 能做什么
+
+| 工具 | 作用 |
 | --- | --- |
-| `doctor` | 检查安装、依赖、数据目录和可用状态。 |
-| `register_source` | 登记要采集的网站/来源；登记默认**不等于启用**。 |
-| `search_papers` | 从学术及网页检索来源发现资料，可融合多个来源，并保存检索证据。 |
-| `acquire_paper` | 通过高量引擎采集已登记且已启用的来源，保存原文与采集记录。 |
-| `acquire_page` | 用浏览器采集已登记来源的单页，解析正文，并可提取图片及其出处。 |
-| `query_library` | 对本地资料库做只读查询。 |
-| `search_images` | 在已采集的本地图片证据中按文字、来源和时间查找。 |
-| `deep_search` | 融合文本与图片线索，给出来源、许可归属和预算轨迹；**只检索，不自动下载**。 |
-| `get_job_status` | 用 `job_id` 取回后台作业完整结果，或用 `recent` 查看最近作业摘要。 |
+| `doctor` | 安装与资料目录体检 |
+| `register_source` | 登记采集来源，拒绝覆盖重复来源；登记不等于启用 |
+| `search_papers` | 多提供方文献检索，失败也留证据 |
+| `acquire_paper` | 采集已登记、已启用来源的 URL |
+| `acquire_page` | 浏览器采集单页，保存原文、解析结果与引擎尝试记录，可提取图片出处 |
+| `query_library` | 对本地资料表执行只读 SQL |
+| `search_images` | 按文字、来源和时间回查本地图片证据 |
+| `deep_search` | 多轮文本与图片候选检索，保留来源和预算轨迹；只搜，不自动下载 |
+| `get_job_status` | 查询作业与近期摘要，取回后台任务结果 |
 
-典型流程是：先用 `doctor` 体检 → `register_source` 登记来源 →
-`search_papers` / `deep_search` 找线索 → `acquire_paper` / `acquire_page` 留下原文证据 →
-`query_library` / `search_images` 回查。耗时工具可能先返回 `job_id` 和
-`queued` / `truncated`；此时用 `get_job_status` 取最终结果，不能把“尚未等到”当作失败。
-失败会标明 `error_class`，空结果与失败也会区分。图片的许可与署名信息随结果保留；
-使用前仍需自行核对具体授权。
+随包保留论文、竞品、建筑案例、舆情四个研究剧本（Skills）
+舆情剧本不是内建定时监测服务，本版不新增管理面板、证据工作台或自动引文核验
+遇到 `queued` / `truncated`，保留 `job_id` 并用 `get_job_status` 查询，不重复提交
 
-### 最近几次更新
+### v0.4.0 更新了什么
+
+- 中文图形安装向导：固定尺寸、红白雕塑视觉、思源宋体中文、系统等线英文、可折叠位置设置
+- 三动作鸟形阶段动画：每帧约 0.25 秒、整轮约 0.75 秒，不伪造下载百分比
+- 浏览器由官方 patchright/playwright CLI 安装，匹配的缓存可复用，不强制重下载
+- 安装失败、超时与取消保留诊断；支持重试与明确标注的浏览器降级安装
+- 运行中取消按进程树清场，任务和清场均收束后再关闭窗口
+- 11 个 Agent 接入入口，导出配置、命令或版本感知提示词，不自动修改客户端配置
+
+### 下载、校验与安装（Windows）
+
+ZIP：`kaoju-0.4.0.zip`，292,927,113 字节
+SHA-256（也提供 [.sha256 校验文件](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip.sha256)）：
+
+```text
+9a5746b50a3c70f4ae004a42adad1bca45ea9967ae2380dc057a6d38525edb1a
+```
+
+1. 下载后执行 `Get-FileHash .\kaoju-0.4.0.zip -Algorithm SHA256`，与上面逐字核对
+2. 完整解压，进入包含 `release.json` 的发行目录，不要只复制单个 exe
+3. 启动图形向导，使用默认位置或展开位置设置：
+
+   ```powershell
+   .\payload\runtime\kaoju-installer\kaoju-installer.exe --mode wizard --source .
+   ```
+
+默认浏览器采集扩展的安装需要 Python 3.11、`uv`，以及访问官方下载和依赖服务的网络
+编译后的 MCP 服务运行不要求另装 Python；浏览器二进制不在 ZIP 内
+产品可公开下载，无激活步骤或功能门槛，付费支持不用于解锁功能
+
+如需命令行安装：
+
+```powershell
+.\payload\runtime\kaoju-installer\kaoju-installer.exe --mode install --source . --target "$env:LOCALAPPDATA\kaoju" --data-root "$env:LOCALAPPDATA\kaoju\data"
+```
+
+`--no-acq` 跳过浏览器扩展，`acquire_page` 将不可用
+下载失败时向导可以明确选择「跳过浏览器继续」，CLI 可用 `--skip-browsers` 重试
+降级安装不代表浏览器可用；之后从发行目录再次执行正常安装命令补装
+
+解压后的全文件清单有 4,757 行，与仓库内
+[`releases/kaoju-0.4.0/SHA256SUMS.txt`](releases/kaoju-0.4.0/SHA256SUMS.txt) 逐字节一致
+可在发行目录用 `sha256sum -c SHA256SUMS.txt` 核对
+完整包有 4,758 个文件，清单本身不计入自身哈希
+
+### 连接 Agent
+
+完成页选择「连接客户端 / 试一个任务」，提供 Qoder、WorkBuddy、Codex、Claude Code、
+DeepSeek Harness、ZCode、其他 Agent / 通用 JSON，以及 MiMo Desktop、MiniMax Agent、
+Kimi Code、Hermes 四个提示词入口
+
+先备份原有配置，再按所选入口合并；Codex 使用 TOML，Claude Code 使用 PowerShell 命令
+四个提示词入口会要求 Agent 核对当前版本、配置范围和本机 stdio 能力，不猜配置路径
+云端 Agent 不能直接运行本机 exe；导出成功不等于已经连接
+客户端真实发现九个工具并成功调用 `doctor`，才算连接验证通过
+
+也可以导入安装生成的 `<安装根>\kaoju-mcp.json`
+CLI `connect --client` 仅支持 qoder / workbuddy / generic，不等同于 GUI 的 11 个入口
+实际采集后还须读取原文并核对 URL、时间、产物路径与清单哈希
+
+### 验收与升级边界
+
+v0.4.0 的四个目标均新编译；已实测正常安装、坏源失败、空缓存降级、运行中取消清场和「完成」退出
+已核验 11 个入口的导出；隔离 Codex app-server 真实发现九工具、调用 doctor 并完成本地回环浏览器采集
+产物字节数和 SHA-256 与 manifest 一致，不宣称 11 个客户端均已接通
+
+源码全量零 deselect，实际为 **1784 passed、2 failed**，不是全绿
+两条失败是已接受的宿主环境差异：新装的外部 DeepSeek Harness 缺少旧浏览器 worker、DDI skill 与设置文件，
+导致仓库 doctor 的两个 GOOD 断言失败；测试和判级均未删改
+安装后的 package doctor 为 GOOD、nonpass=[]（5 项 PASS、20 项按设计 SKIP），这本身不证明浏览器采集可用
+
+**干净 Windows 首装、活跃或锁定数据库的升级迁移未验证**
+升级前备份数据并退出占用资料库的程序，不要在采集中升级
+卸载保留非空证据数据目录；应从解压的发行目录运行外部安装器，不在安装目录内自卸载
+
+```powershell
+.\payload\runtime\kaoju-installer\kaoju-installer.exe --mode uninstall --target "$env:LOCALAPPDATA\kaoju"
+```
+
+### 版本历史
 
 | 版本 | 主要变化 |
 | --- | --- |
-| [v0.3.1（当前）](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.3.1) | 修复 v0.3.0 公开包缺少采集引擎运行时包元数据、导致 `acquire_paper` 失败的问题；随包安装器现生成 `kaoju-mcp.json`。发行构建新增本机回环抓取和安装器 dry-run 闸，防止同类坏包再通过。 |
-| [v0.3.0](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.3.0) | 工具从 8 个增至 9 个：新增 `get_job_status`；检索与采集支持后台作业、超时后继续查询、宿主取消；失败分类更清楚，`acquire_page` 的 `timeout_seconds` 改为整次操作总预算（默认 18 秒）。**该公开包的 `acquire_paper` 有缺陷，请升级。** |
-| [v0.2.2](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.2.2) | 统一数据根，卸载时保留证据库；修复正常 Wiki 页面被误判为挑战页、随包来源模板无法直接提交、空结果被误报成功等问题；失败采集可定位自己的证据。 |
-| [v0.2.1](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.2.1) | 首次把 `acquire_paper` 编译引擎和 `acquire_page` 浏览器扩展一起交付，使当时的八个工具可用；补齐扩展依赖的许可文本。 |
+| [v0.4.0（当前）](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.0) | 新 Windows 向导、官方下载与缓存复用、取消清场、失败/降级恢复、11 个 Agent 接入入口 |
+| [v0.3.1](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.3.1) | 修复编译采集引擎包元数据和安装器配置文件名，加入编译态安装/采集闸 |
+| [v0.3.0](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.3.0) | 九工具、后台作业与取消、失败分类；其公开包的 acquire_paper 有缺陷，已由 v0.3.1 修复 |
+| [v0.2.2](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.2.2) | 统一数据根、证据保留卸载、挑战页识别和来源模板修复 |
+| [v0.2.1](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.2.1) | 交付两条采集链路与扩展依赖许可文本 |
 
-更早的 v0.2.0 已被取代；v0.1.x 有 MCP 协议兼容缺陷，不建议继续使用。
-历史版本、校验值和资产原样保留，下载时请按**手中版本**对应的校验值验证。
-
-### 下载、安装与校验（Windows）
-
-当前包：[下载 `kaoju-0.3.1.zip`](https://github.com/Jowitt13/kaoju-release/releases/download/v0.3.1/kaoju-0.3.1.zip)。
-它可公开下载、无激活或功能门槛；付费购买的是支持与后续更新，并非功能解锁。
-
-1. 先核对 ZIP 的 SHA-256：
-
-   ```text
-   41225cc770355d04e9061680d68b4e2dc6a47cfcb9f43daafad4ea6ae8abb50d
-   ```
-
-   PowerShell 可运行 `Get-FileHash .\kaoju-0.3.1.zip -Algorithm SHA256`。
-2. 解压，进入含 `release.json` 的目录，再运行随包安装器：
-
-   ```powershell
-   .\payload\runtime\kaoju-installer\kaoju-installer.exe --mode install --source . --target "$env:LOCALAPPDATA\kaoju"
-   ```
-
-   安装器默认还会安装可选浏览器采集扩展，并从官方渠道下载浏览器及所需依赖；
-   `--no-acq` 可跳过扩展，但此时 `acquire_page` 不可用。
-3. 将安装器生成的 `<安装目录>\kaoju-mcp.json` 导入你的 MCP 客户端。
-   编译运行时不要求你另装 Python。安装后可运行：
-
-   ```powershell
-   & "$env:LOCALAPPDATA\kaoju\kaoju-doctor\kaoju-doctor.exe" --package-mode --ddi-home "$env:LOCALAPPDATA\kaoju"
-   ```
-
-解压后还可在 `release.json` 所在目录执行 `sha256sum -c SHA256SUMS.txt`
-逐文件校验。仓库内的 [`releases/kaoju-0.3.1/SHA256SUMS.txt`](releases/kaoju-0.3.1/SHA256SUMS.txt)
-与包内清单逐字节一致（3,832 行）。卸载只移除运行时，非空证据数据目录会保留。
-
-**验证边界：**v0.3.1 候选包经过完整安装、两条采集链路实测和发布后重下载哈希核对；
-源码全量测试为 1602 通过、7 失败，并非全绿。失败归因与另外三个编译目标复用的说明
-已如实记录在 [v0.3.1 发布说明](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.3.1) 中。
-
----
+更早版本与校验文件保留于下方历史档案，请用手中版本对应的哈希，不混用
 
 ## English
 
-### kaoju — official release channel
+kaoju is a local research toolkit for MCP-capable Agents: discover sources, collect pages and papers,
+and keep originals, parsed artifacts and traceable evidence locally. It is not a standalone chatbot
+or a substitute for source and image-license review. Search and collection use external services.
 
-kaoju is an MCP toolset for finding research material, collecting web pages
-and papers, and keeping local, traceable evidence. It plugs into an MCP client;
-it is not a standalone chatbot. Search and collection use external network
-services, while the resulting evidence is stored under your chosen local data
-root. Four scenario Skills cover paper research, monitoring, competitive
-research, and architecture case studies.
+[Download v0.4.0](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip)
+and verify the SHA-256 above. Unpack the complete archive, enter the directory containing `release.json`,
+then run the wizard command shown above. Browser-extension installation requires Python 3.11, `uv`
+and network access; the compiled MCP runtime needs no separate Python. Browsers are downloaded at install time.
 
-The nine tools are `doctor` (health), `register_source` (source registry),
-`search_papers` (discovery), `acquire_paper` (static/high-volume crawl),
-`acquire_page` (browser page capture), `query_library` (read-only data query),
-`search_images` (local image evidence), `deep_search` (attributed text/image
-research, without downloading), and `get_job_status` (completed or recent jobs).
-Long-running calls can return a `job_id`; use `get_job_status` for the final
-payload. An empty result is distinct from a failure, and image licensing still
-needs human review.
+This release adds a Chinese Windows wizard, official browser installation with compatible-cache reuse,
+explicit failure/degraded recovery, process-tree cancellation, and 11 Agent onboarding exports.
+MiMo Desktop, MiniMax Agent, Kimi Code and Hermes are prompt-only entries, not claimed native integrations.
+The wizard never edits existing client configuration automatically. Exporting configuration is not proof of connection.
 
-### Quick start (Windows)
+All four targets were newly compiled. Normal installation, bad-source failure, empty-cache degradation,
+running cancellation and Finish-button exit were exercised. All 11 exports were checked; an isolated
+Codex app-server discovered all nine tools and completed a loopback browser capture with artifact hashes verified.
 
-Download [`kaoju-0.3.1.zip`](https://github.com/Jowitt13/kaoju-release/releases/download/v0.3.1/kaoju-0.3.1.zip),
-verify its SHA-256 in the Integrity section below, and unpack it. From the
-directory containing `release.json`, run:
+The full source regression had **1784 passed and 2 failed, zero deselect**. The two owner-accepted failures
+are repository-doctor assertions caused by missing legacy components in the host's newly installed external
+DeepSeek Harness; they were not removed or hidden. Installed package doctor returned GOOD/nonpass=[]
+(5 PASS, 20 by-design SKIP). Clean-Windows installation and active/locked-database migration remain unverified.
+Back up data and close programs using the library before upgrading. Source code remains private;
+downloaded copies have no activation or feature gate. Historical releases and checksum files are retained below.
 
-```powershell
-.\payload\runtime\kaoju-installer\kaoju-installer.exe --mode install --source . --target "$env:LOCALAPPDATA\kaoju"
-```
+---
 
-Import the generated `<install root>\kaoju-mcp.json` into your MCP client.
-The compiled runtime needs no separate Python installation. The optional
-browser acquisition extension is installed by default and downloads its
-dependencies and browsers during installation; `--no-acq` skips it and leaves
-`acquire_page` unavailable. Uninstall preserves non-empty local evidence data.
+## Historical archive / 历史档案（v0.3.1 及更早）
 
-Trust anchor for kaoju WorkBuddy releases: change notes and checksums are
-published here. **Since v0.2.1 the compiled package is also downloadable from
-this repository** - v0.2.1 and later releases each carry their master
-archive as an asset, by explicit Owner decision on 2026-09-09, reversing
-the earlier delivery-after-payment-only policy. Releases before v0.2.1
-carry no asset, and no published asset is ever removed.
-Source code remains proprietary and lives in a private repository.
+以下为旧版发布档案，不代表当前默认下载；原历史条目与校验值保留
+The entries below describe earlier releases, not the current default download.
+
 
 ## Releases
 
