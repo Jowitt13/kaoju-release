@@ -11,7 +11,8 @@ kaoju 不是独立聊天机器人，也不替代原文核对或图片授权核�
 检索与采集需要访问外部服务，证据文件保存在本地
 
 **当前版本：[v0.4.0](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.0)**
-· [下载 Windows ZIP](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip)
+· [下载安装器 EXE（推荐）](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0.exe)
+· [手动安装 ZIP](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip)
 · [发布说明](releases/kaoju-0.4.0/RELEASE_NOTES.md)
 
 ### 能做什么
@@ -42,6 +43,29 @@ kaoju 不是独立聊天机器人，也不替代原文核对或图片授权核�
 - 11 个 Agent 接入入口，导出配置、命令或版本感知提示词，不自动修改客户端配置
 
 ### 下载、校验与安装（Windows）
+
+#### 推荐：一个 EXE，双击开始
+
+1. 下载 [kaoju-setup-0.4.0.exe](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0.exe)
+2. 双击运行，联网下载并校验 v0.4.0 发行包后，自动打开原来的中文安装向导，无需手动解压
+3. 按向导安装，完成后选择 Agent 接入入口，按说明合并配置并调用 `doctor` 验证
+
+安装器采用透明雕塑图标，大小 180,736 字节；它是**联网安装入口，不是离线包**
+需要可访问 GitHub 和官方依赖/浏览器下载服务，且准备阶段至少有 2.5 GiB 临时盘空间
+下载包的长度、SHA-256 和内部逐文件清单均校验通过才启动向导
+正常退出后自动清理自己的下载临时目录；强杀或断电可能留下临时目录
+
+**本 EXE 未做数字签名**，首次运行可能出现 Windows 安全提示；请核对下载来源和哈希，不要关闭系统防护
+EXE SHA-256（[校验文件](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0.exe.sha256)）：
+
+```text
+68926a2f4229199d87225acbcbf98b98de41d2ba4073c00ca319b91318e7b5d4
+```
+
+可执行 `Get-FileHash .\kaoju-setup-0.4.0.exe -Algorithm SHA256` 逐字核对
+新入口复用以下原始 v0.4.0 ZIP 和向导，原 ZIP、版本 tag、历史校验值不变
+
+#### 手动安装 / 命令行：保留原 ZIP
 
 ZIP：`kaoju-0.4.0.zip`，292,927,113 字节
 SHA-256（也提供 [.sha256 校验文件](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip.sha256)）：
@@ -129,9 +153,16 @@ kaoju is a local research toolkit for MCP-capable Agents: discover sources, coll
 and keep originals, parsed artifacts and traceable evidence locally. It is not a standalone chatbot
 or a substitute for source and image-license review. Search and collection use external services.
 
-[Download v0.4.0](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip)
-and verify the SHA-256 above. Unpack the complete archive, enter the directory containing `release.json`,
-then run the wizard command shown above. Browser-extension installation requires Python 3.11, `uv`
+[Download the single EXE installer](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0.exe)
+(180,736 bytes) and verify its SHA-256 above. It downloads and verifies the unchanged v0.4.0 archive,
+then opens the original Chinese wizard; manual extraction is not needed. This is online-only, needs
+at least 2.5 GiB of temporary free space, and is **unsigned**. Windows may display a security warning;
+verify the official source and hash rather than disabling protection. Normal exit removes its own
+download directory; forced termination or power loss may leave temporary files.
+
+The [original ZIP](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0.zip)
+remains available unchanged for manual/CLI installation: unpack it, enter the directory containing
+`release.json`, then run the wizard command shown above. Browser-extension installation requires Python 3.11, `uv`
 and network access; the compiled MCP runtime needs no separate Python. Browsers are downloaded at install time.
 
 This release adds a Chinese Windows wizard, official browser installation with compatible-cache reuse,

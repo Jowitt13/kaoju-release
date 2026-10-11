@@ -70,3 +70,29 @@ Full source regression: **1784 passed, 2 owner-accepted host-dependent repositor
 Installed package doctor was GOOD/nonpass=[]; this is not itself proof that browser acquisition is available.
 Clean-Windows installation, active/locked-database migration and real integration of all 11 clients remain unverified.
 Back up data and close programs using the library before upgrading. No previous releases or checksums were removed.
+
+## 2026-10-12 补充：单 EXE 联网安装入口
+
+[kaoju-setup-0.4.0.exe](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0.exe)
+为新增联网入口，使用透明雕塑图标，双击后下载并校验原 v0.4.0 ZIP 与内部清单，再启动原中文向导
+无需手动解压，不是离线版；原 ZIP、旧附件、tag 与其校验值全部保留不变
+
+```text
+file   : kaoju-setup-0.4.0.exe
+bytes  : 180736
+sha256 : 68926a2f4229199d87225acbcbf98b98de41d2ba4073c00ca319b91318e7b5d4
+```
+
+[EXE 校验文件](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0.exe.sha256)
+本 EXE 未做数字签名，不声称 SmartScreen 信誉验证；请从官方页面下载并核对哈希
+准备阶段至少需要 2.5 GiB 临时盘空间，原有 Python 3.11 / uv / 官方网络要求不变
+正常退出清理自己的临时目录；强杀或断电不保证清理
+
+包装器目标测试 24 passed；完整源码回归 1808 passed / 2 failed，零 deselect
+两条仍是上文已接受的宿主 doctor 差异，不冒称全绿
+前一包装候选已实测完整安装、完成按钮退出和临时目录清理；图标修订另以真实编译验证全部七个 ICO 尺寸嵌入
+未重复宣称新一轮全部 GUI 状态或干净 Windows 验收
+
+The new **unsigned, online-only** single EXE entry verifies and opens the original v0.4.0 package
+without manual extraction. The original ZIP and tag are unchanged. The wrapper has 24 passing tests;
+full regression is 1808 passed plus the same two accepted host-doctor failures, zero deselect.
