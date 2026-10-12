@@ -1,5 +1,20 @@
 # 考据 kaoju · v0.4.0
 
+## 最新安装入口 · 2026-10-12 · v0.4.0 / 安装器修订 v023
+
+- [联网单 EXE](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0-online-v023.exe)：小体积入口，联网下载发行包及安装依赖
+- [离线单 EXE](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-setup-0.4.0-offline-v023.exe)：Windows x64，约 910 MiB，自带 Python / uv / 冻结依赖 / 采集浏览器，安装无需下载依赖
+- [新版联网 ZIP](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.0/kaoju-0.4.0-online-v023.zip) · [修订说明与校验附件](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.0)
+
+两种 EXE 都含 DeepSeek Harness 的 insert / cwd / serverName 修正，不自动改客户端配置
+**未做数字签名**；联网冷下载在本机 30 分钟预算内未完成，暖环境安装通过，网络较慢可选离线版
+公开 ZIP 的逐文件下载校验在本机既有代理路径通过，默认直连两次超时，未改系统网络设置
+离线版安装后访问网络资料仍需网络；干净 Windows 和全部客户端接入不作验证承诺
+产品仍为 v0.4.0，旧附件及 tag 保留；下文旧安装入口和历史校验资料不作为本次新版推荐入口
+
+---
+
+
 [中文](#中文) · [English](#english)
 
 ## 中文
