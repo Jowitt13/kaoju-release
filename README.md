@@ -1,7 +1,7 @@
 <div align="center">
 
 <p align="center">
-<img src="assets/sculpture-white.png" alt="kaoju 的白底红色雕塑" width="480" />
+<img src="assets/sculpture-wide.jpg" alt="kaoju 的白底红色雕塑" width="720" />
 </p>
 
 # 考据 kaoju
