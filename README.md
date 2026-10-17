@@ -10,9 +10,11 @@
 
 为 Agent 而生的多源搜索工具，让一个问题连接论文、网页与图像，让搜索继续成为理解
 
-[下载联网版](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1.exe) · [下载离线版](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1-offline.exe) · [发布说明](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.1)
+[Windows 联网版](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1.exe) · [Windows 离线版](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1-offline.exe) · [发布说明](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.1)
 
-Windows x64 · MCP · 9 个工具 · 4 个搜索场景
+[Apple Silicon Mac 预览版](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.1-macos-preview.2)
+
+Windows x64 正式版 · Apple Silicon Mac 预览版 · MCP · 9 个工具 · 4 个搜索场景
 
 </div>
 
@@ -74,7 +76,9 @@ kaoju 把多源检索、图文搜索和按需正文采集接入你正在使用�
 
 ## 安装，然后连接你的 Agent
 
-### 1. 选择一个安装器
+### 1. 选择平台与安装方式
+
+**Windows x64 · 正式版**
 
 - [**联网安装器**](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1.exe) · 约 179 KiB：先下载一个小 EXE，运行后获取发行包；安装采集扩展时按需下载依赖和浏览器
 - [**离线安装器**](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1-offline.exe) · 约 913 MiB：提前下载完整安装资源，安装时不再下载依赖和浏览器
@@ -83,7 +87,15 @@ kaoju 把多源检索、图文搜索和按需正文采集接入你正在使用�
 
 安装器暂未做数字签名。请从本仓库发布页下载，按随附的 [SHA-256 校验文件](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/SHA256SUMS.txt) 核对；不要关闭系统安全防护
 
-### 2. 在完成页选择「连接 Agent」
+**Apple Silicon Mac · 预览版**
+
+[Apple Silicon Mac 预览版](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.1-macos-preview.2) · [安装提示词](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1-macos-preview.2/AGENT_INSTALL.md) · [SHA-256 校验](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1-macos-preview.2/SHA256SUMS.txt)
+
+原生 arm64 联网运行包，由 Agent 按说明安装与接入；不是 `.dmg` 图形安装器或离线包。已在 macOS 15 ARM 云端环境验收；真实桌面 Agent、四场景自动触发和 Apple 签名／公证仍未验证。请先校验并阅读预览版说明，不关闭系统安全保护。Windows 用户仍使用上方正式安装器。
+
+### 2. 连接你的 Agent
+
+Windows 用户在安装完成页选择「连接 Agent」；Mac 预览版用户使用随附的 `AGENT_INSTALL.md`，让 Agent 按其中步骤处理安装与接入。
 
 向导提供 Codex、Claude Code、DeepSeek Harness、Qoder、WorkBuddy、ZCode、MiMo Desktop、MiniMax Agent、Kimi Code、Hermes 及通用入口，生成对应的配置、命令或接入提示词
 
@@ -95,7 +107,7 @@ kaoju 把多源检索、图文搜索和按需正文采集接入你正在使用�
 - **Skills 加载**：客户端发现四个场景；不支持原生 Skills 的客户端，可按向导提供的场景任务手动读取对应文件执行
 - **开始搜索**：提供研究对象、时间范围与交付要求，明确指定一个场景即可
 
-复制提示词不等于已经接通，MCP 可用也不等于 Skills 已加载。纯云端 Agent 不能直接执行本机 EXE，需要能运行本地 MCP 的客户端环境
+复制提示词不等于已经接通，MCP 可用也不等于 Skills 已加载。纯云端 Agent 不能直接执行你电脑上的本地程序，需要能运行本地 MCP 的客户端环境
 
 <details>
 <summary><strong>开发者：九个 MCP 工具</strong></summary>
@@ -138,6 +150,8 @@ Four bundled Skills turn those tools into practical workflows: **paper research,
 Install on Windows x64, open **Connect Agent**, and follow the client-specific instructions. MCP connection and Skill discovery must be verified separately; clients without native Skills can use the manual scenario prompts
 
 [Online installer](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1.exe) · [Offline installer](https://github.com/Jowitt13/kaoju-release/releases/download/v0.4.1/kaoju-setup-0.4.1-offline.exe) · [Release notes](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.1)
+
+Apple Silicon Mac users can try the [native preview](https://github.com/Jowitt13/kaoju-release/releases/tag/v0.4.1-macos-preview.2), an online runtime bundle with Agent-assisted installation, not a graphical or offline installer. Desktop-client/Skills triggering and Apple signing/notarization remain unverified.
 
 Installers are unsigned. Verify the official download and published SHA-256; do not disable security protection. Offline installation does not make online search available without a network. Provider access and credentials may require additional setup
 
